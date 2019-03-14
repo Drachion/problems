@@ -1,0 +1,68 @@
+@(employees: List[models.users.Employee],user: models.users.User)
+@main("Employees",user){
+    <h1>Current managers / administrators</h1>
+
+
+    @* Display successful new user message from flash, if it is set *@
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success">
+			@flash.get("success")
+		</div>
+}
+
+    <div class="col-sm-9">
+        <h4>Here are all the current managers / administrators on the system.</h4>
+        <table class="table table-bordered table-hover table-condensed">
+            <thead>
+        <!-- The header row-->
+        <tr>
+                <th>Image</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Job Role</th>
+                <th>Address</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>DOB</th>
+
+            <!-- DO we also need to output their address here?  -->
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Managers data -->
+       
+            @* Loop for creating table rows from User data *@
+            @for(e<-employees) {
+               <tr>
+                    <td>@e.getEmpId</td>
+                    <td>@e.getName</td>
+                    <td>@e.getJobRole</td>
+                    <td>@e.getAddress</td>
+                    <td>@e.getDepartment</td>
+                    <td>@e.getEmail</td>
+                    <td>@e.getDateOfBirth</td>
+                  <!-- Update button -->
+						<td>
+							<a href="@routes.HomeController.updateEmployee(e.getEmail)" class="button-xs btn-danger">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+                        </td>
+                  <!-- Delete button -->
+						<td>
+							<a href="@routes.HomeController.deleteEmployee(e.getEmail)" class="button-xs btn-danger" onclick="return confirmDel();">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+                        </td>
+               </tr>
+            }
+        
+        </tbody>
+    </table>
+
+    <p>
+        <a href="@routes.HomeController.addEmployee()">
+            <button class="btn btn-primary">Add a new Employee</button>
+        </a>
+    </p>
+</div>
+ }

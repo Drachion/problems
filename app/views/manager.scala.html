@@ -1,0 +1,68 @@
+@(managers: List[models.users.Manager],user: models.users.User)
+@main("Managers",user){
+    <h1>Current managers / administrators</h1>
+
+
+    @* Display successful new user message from flash, if it is set *@
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success">
+			@flash.get("success")
+		</div>
+}
+
+    <div class="col-sm-9">
+        <h4>Here are all the current managers / administrators on the system.</h4>
+        <table class="table table-bordered table-hover table-condensed">
+            <thead>
+        <!-- The header row-->
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Password</th>
+            <th>Head of Department</th>
+            <th>Job Role</th>
+            <th>Password</th>
+
+            <!-- DO we also need to output their address here?  -->
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Managers data -->
+       
+            @* Loop for creating table rows from User data *@
+            @for(m<-managers) {
+               <tr>
+                  <td>@m.getEmail</td>
+                  <td>@m.getName</td>
+                  <td>@m.getDateOfBirthString</td>
+                  <td>@m.getPassword</td>
+                  <td>@m.getDepartment</td>
+                  <th>@m.getJobRole</th>
+                  <th>@m.getPassword</th>
+                  <!-- Update button -->
+						<td>
+							<a href="@routes.HomeController.updateManager(m.getEmail)" class="button-xs btn-danger">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+                        </td>
+                  <!-- Delete button -->
+						<td>
+							<a href="@routes.HomeController.deleteManager(m.getEmail)" class="button-xs btn-danger" onclick="return confirmDel();">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+                        </td>
+               </tr>
+            }
+        
+        </tbody>
+    </table>
+
+    <p>
+        <a href="@routes.HomeController.addManager()">
+            <button class="btn btn-primary">Add a new Administrator</button>
+        </a>
+    </p>
+</div>
+ }

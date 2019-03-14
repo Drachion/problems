@@ -1,0 +1,9 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/conf/evolutions,/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/target/scala-2.12/classes/evolutions)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/conf/evolutions/default,/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/target/scala-2.12/classes/evolutions/default)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/conf/evolutions/default/3.sql,/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/target/scala-2.12/classes/evolutions/default/3.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/conf/evolutions/default/2.sql,/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/target/scala-2.12/classes/evolutions/default/2.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/conf/evolutions/default/1.sql,/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/target/scala-2.12/classes/evolutions/default/1.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/conf/application.conf,/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/target/scala-2.12/classes/application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/conf/logback.xml,/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/target/scala-2.12/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/conf/routes,/home/wdd/Software-CA1/Software-CA1/Employee System - Latest Copy/target/scala-2.12/classes/routes)[0m

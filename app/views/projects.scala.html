@@ -1,0 +1,92 @@
+@(employees: List[models.users.Employee], projects: List[models.project.Project],
+user: models.users.User,env: play.api.Environment)
+@main("Projects",user){
+    <h1>Current Projects</h1>
+
+
+    @* Display successful new product message from flash, if it is set *@
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success">
+			@flash.get("success")
+		</div>
+}
+    <div class="col-sm-3">
+		<h4>Project List</h4>
+	        <ul class="list-group">
+                    <a href = "@routes.HomeController.projects(0)" class="list-group-item">All Projects</a>
+		        @for(p<-projects) {
+			        <a href = "@routes.HomeController.projects(p.getId())" class="list-group-item catheight">@p.getName
+                        <span class="badge">@p.getEmployees.size</span> 
+                    </a>
+			    }
+            </ul>
+    </div>
+
+    <div class="col-sm-9">
+        <h4>Note that all products are second hand, unless otherwise stated.</h4>
+        <table class="table table-bordered table-hover table-condensed">
+            <thead>
+        <!-- The header row-->
+        <tr>
+            <th>Image</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Job Role</th>
+            <th>Address</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>DOB</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Product row(s) -->
+       
+            @* Loop for creating table rows from Employee data *@
+            @for(e<-employees) {
+               <tr>
+                    @if(env.resource("public/images/productImages/" + e.getEmpId + "thumb.jpg").isDefined) {
+                        <td><img src="/assets/images/productImages/@(e.getEmpId + "thumb.jpg")"/></td>
+                    } else {
+                        <td><img src="/assets/images/productImages/noImage.jpg"/></td>
+                    }
+                  <td>@e.getEmpId</td>
+                  <td>@e.getName</td>
+                  <td>@e.getJobRole</td>
+                  <td>@e.getAddress</td>
+                  <td>@e.getDepartment</td>
+                  <td>@e.getEmail</td>
+                  <td>@e.getDateOfBirth</td>
+
+                  @if((user != null) && ("manager".equals(user.getRole()))) {
+                  <!-- Update button -->
+
+			    <td>
+					<a href="@routes.HomeController.updateEmployee(e.getEmail)" class="button-xs btn-danger">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+                        </td> 
+                  <!-- Delete button -->
+
+				<td>
+					<a href="@routes.HomeController.deleteEmployee(e.getEmail)" class="button-xs btn-danger" onclick="return confirmDel();">
+						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+                </td>
+                  } 
+
+                }
+               </tr>
+            }
+        
+        </tbody>
+    </table>
+    @if((user != null) && ("manager".equals(user.getRole()))) {
+    <p>
+        NEED TO ADD THE ADD EMPLOYEE METHOD
+        <a href="@routes.HomeController.addEmployee()">
+            <button class="btn btn-primary">Add an employee</button>
+        </a>
+    </p>
+    }
+</div>
+ 
